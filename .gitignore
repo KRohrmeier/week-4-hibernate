@@ -47,3 +47,18 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+
+# logs (not that any of these work)
+/logs/
+logs/
+logs/*
+logs/week1userdisplayexercise.log
+week1userdisplayexercise.log
+
+hibernate.cfg.xml
+
+database.properties
+
+src/main/resources/database.properties
+src/test/resources/database.properties
