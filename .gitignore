@@ -58,8 +58,8 @@ week1userdisplayexercise.log
 
 hibernate.cfg.xml
 /home/kat/IdeaProjects/week-4-hibernate-exercise-KRohrmeier/src/main/resources/hibernate.cfg.xml
-database.properties
 src/main/resources/hibernate.cfg.xml
 
 src/main/resources/database.properties
 src/test/resources/database.properties
+database.properties
