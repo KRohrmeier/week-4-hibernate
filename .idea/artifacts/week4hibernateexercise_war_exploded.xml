@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="week4hibernateexercise:war exploded">
-    <output-path>$PROJECT_DIR$/target/week1userdisplayexercise</output-path>
+    <output-path>$PROJECT_DIR$/target/week-4-hibernate-exercise</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -15,7 +15,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: javax:javaee-web-api:7.0" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.39" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.11" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:2.6.0" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.10.0" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.10.0" />
@@ -35,7 +36,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/week1userdisplayexercise/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/week-4-hibernate-exercise/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="week4hibernateexercise/web/Web" />
     </root>

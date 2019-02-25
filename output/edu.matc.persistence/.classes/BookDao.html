@@ -1,0 +1,173 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BookDao</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">edu.matc.persistence</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BookDao (edu.matc.persistence)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BookDao</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (38/ 38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package edu.matc.persistence;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import edu.matc.entity.Book;
+<i>4</i>&nbsp;import org.apache.logging.log4j.LogManager;
+<i>5</i>&nbsp;import org.apache.logging.log4j.Logger;
+<i>6</i>&nbsp;import org.hibernate.Session;
+<i>7</i>&nbsp;import org.hibernate.SessionFactory;
+<i>8</i>&nbsp;import org.hibernate.Transaction;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import javax.persistence.criteria.CriteriaBuilder;
+<i>11</i>&nbsp;import javax.persistence.criteria.CriteriaQuery;
+<i>12</i>&nbsp;import javax.persistence.criteria.Root;
+<i>13</i>&nbsp;import java.util.List;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;/**
+<i>16</i>&nbsp; * The type BookDAO for the Book class.
+<i>17</i>&nbsp; */
+<b class="fc"><i>18</i>&nbsp;public class BookDao {</b>
+<i>19</i>&nbsp;
+<b class="fc"><i>20</i>&nbsp;    private final Logger logger = LogManager.getLogger(this.getClass());</b>
+<b class="fc"><i>21</i>&nbsp;    SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    /**
+<i>24</i>&nbsp;     * Get book by id
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    public Book getById(int id) {
+<b class="fc"><i>27</i>&nbsp;        logger.info(&quot;In getById() using id {}&quot;, id);</b>
+<b class="fc"><i>28</i>&nbsp;        Session session = sessionFactory.openSession();</b>
+<b class="fc"><i>29</i>&nbsp;        Book book = session.get(Book.class, id);</b>
+<b class="fc"><i>30</i>&nbsp;        session.close();</b>
+<b class="fc"><i>31</i>&nbsp;        return book;</b>
+<i>32</i>&nbsp;    }
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * update book
+<i>36</i>&nbsp;     * @param book  Book to be inserted or updated
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    public void saveOrUpdate(Book book) {
+<b class="fc"><i>39</i>&nbsp;        logger.info(&quot;In saveOrUpdate() with Book {}&quot;, book);</b>
+<b class="fc"><i>40</i>&nbsp;        Session session = sessionFactory.openSession();</b>
+<b class="fc"><i>41</i>&nbsp;        Transaction transaction = session.beginTransaction();</b>
+<b class="fc"><i>42</i>&nbsp;        session.saveOrUpdate(book);</b>
+<b class="fc"><i>43</i>&nbsp;        transaction.commit();</b>
+<b class="fc"><i>44</i>&nbsp;        session.close();</b>
+<b class="fc"><i>45</i>&nbsp;    }</b>
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    /**
+<i>48</i>&nbsp;     * insert Book
+<i>49</i>&nbsp;     * @param book  Book to be inserted
+<i>50</i>&nbsp;     */
+<i>51</i>&nbsp;    public int insert(Book book) {
+<b class="fc"><i>52</i>&nbsp;        logger.info(&quot;In insert() with Book {}&quot;, book);</b>
+<b class="fc"><i>53</i>&nbsp;        int id = 0;</b>
+<b class="fc"><i>54</i>&nbsp;        Session session = sessionFactory.openSession();</b>
+<b class="fc"><i>55</i>&nbsp;        Transaction transaction = session.beginTransaction();</b>
+<b class="fc"><i>56</i>&nbsp;        id = (int)session.save(book);</b>
+<b class="fc"><i>57</i>&nbsp;        transaction.commit();</b>
+<b class="fc"><i>58</i>&nbsp;        session.close();</b>
+<b class="fc"><i>59</i>&nbsp;        return id;</b>
+<i>60</i>&nbsp;    }
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    /**
+<i>63</i>&nbsp;     * Delete a book
+<i>64</i>&nbsp;     * @param book Book to be deleted
+<i>65</i>&nbsp;     */
+<i>66</i>&nbsp;    public void delete(Book book) {
+<b class="fc"><i>67</i>&nbsp;        logger.info(&quot;In delete() for Book {}&quot;, book);</b>
+<b class="fc"><i>68</i>&nbsp;        Session session = sessionFactory.openSession();</b>
+<b class="fc"><i>69</i>&nbsp;        Transaction transaction = session.beginTransaction();</b>
+<b class="fc"><i>70</i>&nbsp;        session.delete(book);</b>
+<b class="fc"><i>71</i>&nbsp;        transaction.commit();</b>
+<b class="fc"><i>72</i>&nbsp;        session.close();</b>
+<b class="fc"><i>73</i>&nbsp;    }</b>
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;    /** Return a list of all books
+<i>76</i>&nbsp;     *
+<i>77</i>&nbsp;     * @return All books
+<i>78</i>&nbsp;     */
+<i>79</i>&nbsp;    public List&lt;Book&gt; getAll() {
+<b class="fc"><i>80</i>&nbsp;        logger.info(&quot;In getAll()&quot;);</b>
+<b class="fc"><i>81</i>&nbsp;        Session session = sessionFactory.openSession();</b>
+<b class="fc"><i>82</i>&nbsp;        CriteriaBuilder builder = session.getCriteriaBuilder();</b>
+<b class="fc"><i>83</i>&nbsp;        CriteriaQuery&lt;Book&gt; query = builder.createQuery(Book.class);</b>
+<b class="fc"><i>84</i>&nbsp;        Root&lt;Book&gt; root = query.from(Book.class);</b>
+<b class="fc"><i>85</i>&nbsp;        List&lt;Book&gt; books = session.createQuery(query).getResultList();</b>
+<b class="fc"><i>86</i>&nbsp;        session.close();</b>
+<b class="fc"><i>87</i>&nbsp;        return books;</b>
+<i>88</i>&nbsp;    }
+<i>89</i>&nbsp;
+<i>90</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-02-24 19:36</div>
+</div>
+</body>
+</html>

@@ -36,7 +36,7 @@
       <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>5.1.39</version>
+        <version>8.0.11</version>
       </dependency>
       <dependency>
         <groupId>jstl</groupId>
@@ -72,7 +72,7 @@
 
     </dependencies>
     <build>
-      <finalName>week1userdisplayexercise</finalName>
+      <finalName>week-4-hibernate-exercise</finalName>
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
