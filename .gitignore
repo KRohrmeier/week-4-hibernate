@@ -63,3 +63,5 @@ src/main/resources/hibernate.cfg.xml
 src/main/resources/database.properties
 src/test/resources/database.properties
 database.properties
+
+# git filter-branch --force --index-filter \ 'git rm --cached --ignore-unmatch src/main/resources/hibernate.cfg.xml' \--prune-empty --tag-name-filter cat -- --all
